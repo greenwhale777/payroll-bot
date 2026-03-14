@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(npx next:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(npm install:*)",
+      "Read(//c/EV-System/EV3-Managing/**)",
+      "Bash(npm run:*)",
+      "Bash(npx ts-node -e \":*)",
+      "Bash(node -e \":*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)"
     ]
   }
 }

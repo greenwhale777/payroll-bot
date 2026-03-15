@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { apiKeyAuth } from './middleware/auth';
 import employeesRouter from './routes/employees';
 import ratesRouter from './routes/rates';
 import payrollRouter from './routes/payroll';
@@ -14,10 +15,13 @@ const PORT = parseInt(process.env.PORT || '8080', 10);
 app.use(cors());
 app.use(express.json());
 
-// 헬스체크
+// 헬스체크 (인증 불필요)
 app.get('/health', (_req, res) => {
   res.json({ status: 'ok', service: 'payroll-bot', timestamp: new Date().toISOString() });
 });
+
+// API 인증 미들웨어 적용
+app.use('/api', apiKeyAuth);
 
 // 라우트
 app.use('/api/employees', employeesRouter);
